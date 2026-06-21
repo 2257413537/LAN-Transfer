@@ -1,6 +1,6 @@
 # LAN Transfer
 
-> 局域网内多设备间快速传输文件和消息的轻量级工具——无需互联网，无需安装客户端，打开浏览器即用。
+> 局域网内多设备间快速传输文件和消息的轻量级工具——无需互联网，无需安装客户端，打开浏览器即用。支持打包为独立桌面应用。
 
 ## 快速上手
 
@@ -27,6 +27,27 @@ python server.py
 
 启动后终端会显示局域网地址（如 `http://192.168.1.100:8080`），在同一局域网内的任意设备浏览器中打开该地址即可使用。手机端可通过扫描页面上的二维码快速连接。
 
+### 桌面应用模式
+
+除了浏览器模式，还可以启动为原生桌面窗口：
+
+```bash
+python desktop.py
+```
+
+桌面模式会打开一个独立窗口（基于系统 WebView），同时保持局域网内其他设备通过浏览器访问的能力。
+
+### 打包为 exe
+
+将应用打包为单个可执行文件，方便分发给没有 Python 环境的用户：
+
+```bash
+# 一键打包（首次会自动生成图标）
+build.bat
+```
+
+打包完成后，可执行文件位于 `dist/LAN Transfer.exe`。双击即可运行，无需安装 Python 或任何依赖。
+
 ## 功能特性
 
 - **多设备互联** — 支持 Windows、Android、iPad 等任意设备通过浏览器接入
@@ -36,6 +57,7 @@ python server.py
 - **批量操作** — 多选后一键复制、批量下载、批量删除
 - **Emoji 支持** — 内置 Emoji 选择器，消息更生动
 - **全文搜索** — 快速检索历史消息和文件
+- **桌面应用** — 支持打包为独立 exe，原生窗口体验，无需浏览器
 - **零配置** — 自动检测局域网 IP，无需手动填写地址
 - **无需安装客户端** — 任何现代浏览器均可使用
 
@@ -43,10 +65,14 @@ python server.py
 
 ```
 .
+├── desktop.py          # 桌面应用入口（pywebview）
 ├── server.py           # 后端服务（aiohttp + WebSocket）
+├── build.bat           # 一键打包脚本
+├── generate_icon.py    # 应用图标生成工具
 ├── requirements.txt    # Python 依赖
 ├── public/
 │   ├── index.html      # 前端页面
+│   ├── app.ico         # 应用图标
 │   ├── app.js          # 前端逻辑
 │   └── style.css       # 样式
 └── data/               # 运行时数据（设备列表、消息记录）
@@ -54,8 +80,9 @@ python server.py
 
 ## 技术栈
 
-- **后端**: Python / aiohttp / WebSocket
+- **后端**: Python / aiohttp / WebSocket / pywebview
 - **前端**: 原生 HTML + CSS + JavaScript
+- **打包**: PyInstaller
 - **图标**: Material Icons Round
 
 ## 贡献指南
