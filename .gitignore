@@ -34,3 +34,8 @@ Thumbs.db
 
 # Codex
 .agents/
+
+# Build artifacts
+build/
+dist/
+*.spec
