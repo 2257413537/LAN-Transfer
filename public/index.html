@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>LAN Transfer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- Top: device tabs -->
+    <div class="top-bar" id="topBar">
+      <div class="top-bar-inner" id="deviceTabs"></div>
+      <button id="selectBtn" class="icon-btn select-btn" title="选择"><span class="material-icons-round">checklist</span></button>
+      <button id="qrBtn" class="icon-btn qr-btn" title="扫码连接"><span class="material-icons-round">qr_code</span></button>
+    </div>
+    <!-- Middle: sidebar + chat -->
+    <div class="middle">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search messages..." />
+          <button id="sidebarToggle" class="icon-btn" title="Collapse sidebar">
+            <span class="material-icons-round">chevron_left</span>
+          </button>
+        </div>
+        <div id="calendarContainer" class="calendar-container"></div>
+        <div id="fileOrganizer" class="file-organizer"></div>
+      </aside>
+      <main class="chat-main">
+        <div id="chatMessages" class="chat-messages">
+          <div class="empty-state" id="emptyState">
+            <span class="material-icons-round">forum</span>
+            <p>Select a device tab to start</p>
+          </div>
+        </div>
+        <div class="chat-input-bar">
+          <div class="emoji-wrapper">
+            <button id="emojiBtn" class="icon-btn" title="Emoji">
+              <span class="material-icons-round">emoji_emotions</span>
+            </button>
+            <div id="emojiPicker" class="emoji-picker hidden"></div>
+          </div>
+          <label class="icon-btn" title="Send file">
+            <span class="material-icons-round">attach_file</span>
+            <input type="file" id="fileInput" hidden multiple />
+          </label>
+          <input type="text" id="msgInput" class="msg-input" placeholder="Type a message..." maxlength="2000" />
+          <button id="sendBtn" class="icon-btn send-btn" title="Send">
+            <span class="material-icons-round">send</span>
+          </button>
+        </div>
+        <div id="selectActionBar" class="select-action-bar hidden">
+          <div class="select-bar-left">
+            <button id="selectAllBtn" class="icon-btn" title="全选/取消全选"><span class="material-icons-round">select_all</span></button>
+            <span id="selectCount" class="select-count">已选 0 项</span>
+          </div>
+          <div class="select-bar-actions">
+            <button id="copySelectedBtn" class="select-action-btn" title="复制"><span class="material-icons-round">content_copy</span><span>复制</span></button>
+            <button id="downloadSelectedBtn" class="select-action-btn" title="批量下载"><span class="material-icons-round">download</span><span>批量下载</span></button>
+            <button id="deleteSelectedBtn" class="select-action-btn danger" title="删除"><span class="material-icons-round">delete</span><span>删除</span></button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <button id="sidebarShow" class="sidebar-show-btn hidden" title="Show sidebar">
+    <span class="material-icons-round">calendar_today</span>
+  </button>
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

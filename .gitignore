@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+venv/
+
+# Runtime data
+data/
+uploads/
+
+# Logs
+*.log
+server_out.txt
+server_err.txt
+server_stdout.txt
+server_stderr.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+
+# Codex
+.agents/
